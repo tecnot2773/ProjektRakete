@@ -16,6 +16,7 @@ var onair_time = 0 #
 var on_floor = false
 var shoot_time=99999 #time since last shot
 
+
 var anim=""
 
 #cache the sprite here for fast access (we will set scale to flip it often)
@@ -61,8 +62,7 @@ func _physics_process(delta):
 		
 	if linear_vel.y > 600:
 		linear_vel.y = 600
-	
-	print(linear_vel.y)
+
 
 	### ANIMATION ###
 
@@ -89,9 +89,6 @@ func _physics_process(delta):
 			new_anim = "jumping"
 		else:
 			new_anim = "falling"
-
-	if shoot_time < SHOOT_TIME_SHOW_WEAPON:
-		new_anim += "_weapon"
 
 	if new_anim != anim:
 		anim = new_anim
