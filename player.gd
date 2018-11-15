@@ -58,6 +58,9 @@ func _physics_process(delta):
 		linear_vel.y = -FLY_SPEED
 	if Input.is_action_pressed("drop"):
 		linear_vel.y += DROP_SPEED
+		
+	if linear_vel.y > 600:
+		linear_vel.y = 600
 	
 	print(linear_vel.y)
 
