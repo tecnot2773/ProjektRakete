@@ -1,11 +1,12 @@
 extends KinematicBody2D
 
-const GRAVITY_VEC = Vector2(0, 900)
+const GRAVITY_VEC = Vector2(0, 700)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
 const WALK_SPEED = 250 # pixels/sec
-const JUMP_SPEED = 480
+const FLY_SPEED = 480
+const DROP_SPEED = 10
 const SIDING_CHANGE_SPEED = 10
 const BULLET_VELOCITY = 1000
 const SHOOT_TIME_SHOW_WEAPON = 0.2
@@ -50,20 +51,15 @@ func _physics_process(delta):
 	target_speed *= WALK_SPEED
 	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 
-	# Jumping
-	if on_floor and Input.is_action_just_pressed("jump"):
-		linear_vel.y = -JUMP_SPEED
-		$sound_jump.play()
-
-	# Shooting
-	if Input.is_action_just_pressed("shoot"):
-		var bullet = preload("res://bullet.tscn").instance()
-		bullet.position = $sprite/bullet_shoot.global_position #use node for shoot position
-		bullet.linear_velocity = Vector2(sprite.scale.x * BULLET_VELOCITY, 0)
-		bullet.add_collision_exception_with(self) # don't want player to collide with bullet
-		get_parent().add_child(bullet) #don't want bullet to move with me, so add it as child of parent
-		$sound_shoot.play()
-		shoot_time = 0
+	
+	# Fly
+	var target_fly_speed = 0
+	if Input.is_action_pressed("fly"):
+		linear_vel.y = -FLY_SPEED
+	if Input.is_action_pressed("drop"):
+		linear_vel.y += DROP_SPEED
+	
+	print(linear_vel.y)
 
 	### ANIMATION ###
 
