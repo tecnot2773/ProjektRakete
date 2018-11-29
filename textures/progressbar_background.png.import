@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/erz.png-e097420da45a0ddc55bb9c6cdb22b0c3.stex"
+path="res://.import/progressbar_background.png-4ebb2541d95a1dd266b04e15a32a776b.stex"
 
 [deps]
 
-source_file="res://textures/bloeke/erz.png"
-dest_files=[ "res://.import/erz.png-e097420da45a0ddc55bb9c6cdb22b0c3.stex" ]
+source_file="res://textures/progressbar_background.png"
+dest_files=[ "res://.import/progressbar_background.png-4ebb2541d95a1dd266b04e15a32a776b.stex" ]
 
 [params]
 
