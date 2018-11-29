@@ -4,20 +4,20 @@
 [ext_resource path="res://TileSet/normaler_block.png" type="Texture" id=2]
 [ext_resource path="res://TileSet/erz.png" type="Texture" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+points = PoolVector2Array( -32, -32, 32, -32, 32, 32, -32, 32 )
 
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="ConvexPolygonShape2D" id=5]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+points = PoolVector2Array( 48, -32, 112, -32, 112, 32, 48, 32 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+
+custom_solver_bias = 0.0
+points = PoolVector2Array( 128, -32, 192, -32, 192, 32, 128, 32 )
 
 [resource]
 
@@ -32,8 +32,8 @@ extents = Vector2( 10, 10 )
 0/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 1 ),
-"shape_transform": Transform2D( 3.20815, 0, 0, 3.0796, 31.9718, 33.9719 )
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 32, 32 )
 } ]
 1/name = "dirt"
 1/texture = ExtResource( 2 )
@@ -46,8 +46,8 @@ extents = Vector2( 10, 10 )
 1/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 2 ),
-"shape_transform": Transform2D( 3.22081, 0, 0, 3.22753, 32.157, 32.0488 )
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, -48, 32 )
 } ]
 2/name = "erz_standard"
 2/texture = ExtResource( 3 )
@@ -60,7 +60,7 @@ extents = Vector2( 10, 10 )
 2/shapes = [ {
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
-"shape": SubResource( 3 ),
-"shape_transform": Transform2D( 3.2477, 0, 0, 3.17374, 31.6325, 32.0488 )
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, -128, 32 )
 } ]
 
