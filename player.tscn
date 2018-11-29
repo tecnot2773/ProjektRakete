@@ -209,6 +209,11 @@ hframes = 16
 frame = 16
 _sections_unfolded = [ "Offset", "Z Index" ]
 
+[node name="smoke" type="Node2D" parent="sprite" index="0"]
+
+position = Vector2( 20.7312, 3.21187 )
+rotation = -1.45648
+
 [node name="anim" type="AnimationPlayer" parent="." index="1"]
 
 root_node = NodePath("..")

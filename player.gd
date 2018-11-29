@@ -1,16 +1,18 @@
 extends KinematicBody2D
 
-const GRAVITY_VEC = Vector2(0, 900)
+const GRAVITY_VEC = Vector2(0, 700)
 const FLOOR_NORMAL = Vector2(0, -1)
 const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
 const WALK_SPEED = 250 # pixels/sec
-const JUMP_SPEED = 480
+const FLY_SPEED = 480
+const DROP_SPEED = 10
 const SIDING_CHANGE_SPEED = 10
 
 var linear_vel = Vector2()
 var onair_time = 0 #
 var on_floor = false
+
 
 var anim=""
 
@@ -46,9 +48,17 @@ func _physics_process(delta):
 	target_speed *= WALK_SPEED
 	linear_vel.x = lerp(linear_vel.x, target_speed, 0.1)
 
-	# Jetpack
-	if Input.is_action_pressed("jump"):
-		linear_vel.y = -JUMP_SPEED
+	
+	# Fly
+	var target_fly_speed = 0
+	if Input.is_action_pressed("fly"):
+		linear_vel.y = -FLY_SPEED
+	if Input.is_action_pressed("drop"):
+		linear_vel.y += DROP_SPEED
+		
+	if linear_vel.y > 600:
+		linear_vel.y = 600
+
 
 	### ANIMATION ###
 
