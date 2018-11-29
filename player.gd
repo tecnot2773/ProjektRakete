@@ -8,8 +8,6 @@ const WALK_SPEED = 250 # pixels/sec
 const FLY_SPEED = 480
 const DROP_SPEED = 10
 const SIDING_CHANGE_SPEED = 10
-const BULLET_VELOCITY = 1000
-const SHOOT_TIME_SHOW_WEAPON = 0.2
 
 var linear_vel = Vector2()
 var onair_time = 0 #
@@ -26,7 +24,6 @@ func _physics_process(delta):
 	#increment counters
 
 	onair_time += delta
-	shoot_time += delta
 
 	### MOVEMENT ###
 
