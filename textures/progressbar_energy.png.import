@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alpha.png-3f3f1be47c0507e82bf37f864f435e0f.stex"
+path="res://.import/progressbar_energy.png-2e5e2d9d785d00b11ab7ae98c203c3da.stex"
 
 [deps]
 
-source_file="res://textures/bloeke/alpha.png"
-dest_files=[ "res://.import/alpha.png-3f3f1be47c0507e82bf37f864f435e0f.stex" ]
+source_file="res://textures/progressbar_energy.png"
+dest_files=[ "res://.import/progressbar_energy.png-2e5e2d9d785d00b11ab7ae98c203c3da.stex" ]
 
 [params]
 
