@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex"
+path="res://.import/progressbar_background.png-4ebb2541d95a1dd266b04e15a32a776b.stex"
 
 [deps]
 
-source_file="res://scroll_bg_sky.png"
-dest_files=[ "res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex" ]
+source_file="res://textures/progressbar_background.png"
+dest_files=[ "res://.import/progressbar_background.png-4ebb2541d95a1dd266b04e15a32a776b.stex" ]
 
 [params]
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex"
+path="res://.import/normaler_block.png-f3ffd228ce0952c93bac2b0e5f2c3c92.stex"
 
 [deps]
 
-source_file="res://scroll_bg_sky.png"
-dest_files=[ "res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex" ]
+source_file="res://TileSet/normaler_block.png"
+dest_files=[ "res://.import/normaler_block.png-f3ffd228ce0952c93bac2b0e5f2c3c92.stex" ]
 
 [params]
 

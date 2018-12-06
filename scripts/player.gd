@@ -6,14 +6,16 @@ const SLOPE_SLIDE_STOP = 25.0
 const MIN_ONAIR_TIME = 0.1
 const WALK_SPEED = 250 # pixels/sec
 const FLY_SPEED = 480
-const DROP_SPEED = 10
 const SIDING_CHANGE_SPEED = 10
+const ENERGY_PER_SECOND = 8
 
 var linear_vel = Vector2()
-var onair_time = 0 #
+var onair_time = 0
 var on_floor = false
-var shoot_time=99999 #time since last shot
 
+var max_fly_time = 1
+var fly_time = 0
+#var energy_regen_timer = 0
 
 var anim=""
 
@@ -51,15 +53,19 @@ func _physics_process(delta):
 
 	
 	# Fly
-	var target_fly_speed = 0
-	if Input.is_action_pressed("fly"):
+	var energy = get_node("../HUD/energyBar")
+	
+	if energy.value > 0 and fly_time < max_fly_time and Input.is_action_pressed("fly"):
 		linear_vel.y = -FLY_SPEED
-	if Input.is_action_pressed("drop"):
-		linear_vel.y += DROP_SPEED
+		fly_time += delta
+		energy.value -= (delta / max_fly_time * 100)
 		
-	if linear_vel.y > 600:
-		linear_vel.y = 600
-
+	if Input.is_action_just_released("fly"):
+		fly_time = 0
+		
+	# energy regeneration
+	if energy.value < 100 and fly_time == 0:
+		energy.value += ENERGY_PER_SECOND * delta
 
 	### ANIMATION ###
 
@@ -74,9 +80,6 @@ func _physics_process(delta):
 			sprite.scale.x = 1
 			new_anim = "run"
 	else:
-		# We want the character to immediately change facing side when the player
-		# tries to change direction, during air control.
-		# This allows for example the player to shoot quickly left then right.
 		if Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
 			sprite.scale.x = -1
 		if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):

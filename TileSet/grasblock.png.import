@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex"
+path="res://.import/grasblock.png-74e193e981711a7d0099e64c06e3542d.stex"
 
 [deps]
 
-source_file="res://scroll_bg_sky.png"
-dest_files=[ "res://.import/scroll_bg_sky.png-df3e8b7d076f566a7bd83c6d4f9b57cf.stex" ]
+source_file="res://TileSet/grasblock.png"
+dest_files=[ "res://.import/grasblock.png-74e193e981711a7d0099e64c06e3542d.stex" ]
 
 [params]
 
