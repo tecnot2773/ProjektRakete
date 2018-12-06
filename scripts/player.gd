@@ -64,7 +64,7 @@ func _physics_process(delta):
 		fly_time = 0
 		
 	# energy regeneration
-	if energy.value < 100 and fly_time == 0:
+	if energy.value < 100 and fly_time == 0 and on_floor:
 		energy.value += ENERGY_PER_SECOND * delta
 
 	### ANIMATION ###
