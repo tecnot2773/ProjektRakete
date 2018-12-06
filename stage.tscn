@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://TileSet/TileSet.tres" type="TileSet" id=1]
-[ext_resource path="res://player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://parallax_bg.tscn" type="PackedScene" id=3]
-[ext_resource path="res://hud.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/Tilemap.gd" type="Script" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://parallax_bg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=5]
 
 [node name="stage" type="Node" index="0"]
 
@@ -25,14 +26,15 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( 720899, 3, 0, 720900, 3, 0, 786435, 3, 0, 786437, 3, 0, 786438, 3, 0, 786439, 3, 0, 786440, 3, 0, 786441, 3, 0, 786442, 3, 0, 786443, 3, 0, 786449, 3, 0, 851976, 3, 0, 851978, 3, 0, 851979, 3, 0, 851984, 3, 0, 917507, 3, 0, 917508, 3, 0, 917509, 3, 0, 917510, 3, 0, 917511, 3, 0, 917512, 3, 0, 917513, 3, 0, 917514, 3, 0, 917515, 3, 0, 917516, 3, 0, 917517, 3, 0, 917518, 3, 0, 917519, 3, 0, 917520, 3, 0, 983048, 3, 0, 983051, 3, 0, 983052, 3, 0, 983053, 3, 0, 983054, 3, 0, 983055, 3, 0, 983056, 3, 0, 983057, 3, 0, 983058, 3, 0, 1048584, 3, 0, 1048587, 3, 0, 1048590, 3, 0, 1048591, 3, 0, 1048592, 3, 0, 1048593, 3, 0, 1048594, 3, 0, 1114119, 3, 0, 1114124, 3, 0, 1114125, 3, 0, 1114126, 3, 0, 1179655, 3, 0, 1179659, 3, 0, 1179660, 3, 0, 1179661, 3, 0, 1245191, 3, 0, 1245193, 3, 0, 1245194, 3, 0, 1245196, 3, 0, 1310727, 3, 0, 1310728, 3, 0 )
+tile_data = PoolIntArray( 196610, 3, 0, 196611, 3, 0, 196612, 3, 0, 196613, 3, 0, 196614, 3, 0, 196615, 3, 0, 196616, 3, 0, 196617, 3, 0 )
+script = ExtResource( 2 )
 
-[node name="player" parent="." index="1" instance=ExtResource( 2 )]
+[node name="player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 340.903, 642.846 )
+position = Vector2( 353.206, 146.614 )
 
-[node name="parallax_bg" parent="." index="2" instance=ExtResource( 3 )]
+[node name="parallax_bg" parent="." index="2" instance=ExtResource( 4 )]
 
-[node name="HUD" parent="." index="3" instance=ExtResource( 4 )]
+[node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
 
 

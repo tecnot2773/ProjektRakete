@@ -57,8 +57,9 @@ func _physics_process(delta):
 	
 	if energy.value > 0 and fly_time < max_fly_time and Input.is_action_pressed("fly"):
 		linear_vel.y = -FLY_SPEED
-		fly_time += delta
-		energy.value -= (delta / max_fly_time * 100)
+		if not Input.is_action_pressed("endless_jetpack"):	#Ü
+			fly_time += delta
+			energy.value -= (delta / max_fly_time * 100)
 		
 	if Input.is_action_just_released("fly"):
 		fly_time = 0
@@ -68,6 +69,8 @@ func _physics_process(delta):
 		energy.value += ENERGY_PER_SECOND * delta
 
 	### ANIMATION ###
+
+	get_node("../HUD/Label").text = "Pos: " + str((self.get_global_transform().origin / 64).round())
 
 	var new_anim = "idle"
 
