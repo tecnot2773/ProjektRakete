@@ -190,9 +190,9 @@ tracks/0/keys = {
 
 custom_solver_bias = 0.0
 radius = 10.0
-height = 44.4787
+height = 35.8703
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1
@@ -261,7 +261,7 @@ editor_draw_drag_margin = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="3"]
 
-position = Vector2( 0.291992, -0.835023 )
+position = Vector2( -3.21187, 0.624923 )
 shape = SubResource( 11 )
 
 
