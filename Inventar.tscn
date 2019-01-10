@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://TileSet/normaler_block.png" type="Texture" id=1]
+[ext_resource path="res://TileSet/erz.png" type="Texture" id=2]
+[ext_resource path="res://TileSet/alpha.png" type="Texture" id=3]
+
+[sub_resource type="ImageTexture" id=1]
+
+flags = 7
+storage = 0
+lossy_quality = 0.7
+flags = 7
+size = Vector2( 0, 0 )
+
+[node name="Inventar" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="ItemList" type="ItemList" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 301.0
+margin_bottom = 148.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 13
+size_flags_horizontal = 1
+size_flags_vertical = 1
+items = [ "Erde", ExtResource( 1 ), false, "Erz", ExtResource( 2 ), false, "Tiborop", ExtResource( 3 ), false, "Chronataphor", ExtResource( 3 ), false, "Renatamor", ExtResource( 3 ), false, "Cobgorop", ExtResource( 3 ), false, "Betamaramor", ExtResource( 3 ), false, "Tizener", ExtResource( 3 ), false, "Beletum", ExtResource( 3 ), false, "Remarophos", SubResource( 1 ), false, "Betanater", ExtResource( 3 ), false, "Meddl", ExtResource( 3 ), false ]
+select_mode = 0
+allow_reselect = false
+max_columns = 4
+same_column_width = true
+icon_mode = 0
+icon_scale = 0.75
+fixed_icon_size = Vector2( 0, 0 )
+_sections_unfolded = [ "Columns", "Grow Direction", "Icon", "Mouse", "Size Flags", "Theme" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+
