@@ -6,7 +6,7 @@
 [ext_resource path="res://parallax_bg.tscn" type="PackedScene" id=4]
 [ext_resource path="res://hud.tscn" type="PackedScene" id=5]
 
-[node name="stage" type="Node"]
+[node name="stage" type="Node" index="0"]
 
 [node name="TileMap" type="TileMap" parent="." index="0"]
 
@@ -19,7 +19,7 @@ cell_half_offset = 2
 cell_tile_origin = 0
 cell_y_sort = false
 cell_clip_uv = false
-collision_use_kinematic = true
+collision_use_kinematic = false
 collision_friction = 1.0
 collision_bounce = 0.0
 collision_layer = 1
@@ -28,11 +28,12 @@ occluder_light_mask = 1
 format = 1
 tile_data = PoolIntArray( 327684, 1, 0, 327686, 1, 0, 393220, 1, 0, 393222, 1, 0, 458755, 1, 0, 458756, 1, 0, 458758, 1, 0, 458759, 1, 0, 524290, 1, 0, 524291, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 589826, 1, 0, 589835, 1, 0, 655361, 1, 0, 655372, 1, 0, 720897, 1, 0, 720903, 1, 0, 720908, 1, 0, 786433, 1, 0, 786439, 1, 0, 786440, 1, 0, 786444, 1, 0, 851969, 1, 0, 851976, 1, 0, 851979, 1, 0, 851980, 1, 0, 917505, 1, 0, 917516, 1, 0, 983041, 1, 0, 983042, 1, 0, 983052, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Cell", "Collision" ]
+_sections_unfolded = [ "Collision" ]
 
 [node name="player" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 353.206, 146.614 )
+position = Vector2( 253.206, 146.614 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
 
 [node name="parallax_bg" parent="." index="2" instance=ExtResource( 4 )]
 

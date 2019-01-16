@@ -28,6 +28,7 @@ var sel_pos = Vector2(-1, -1)
 var end_pos = Vector2(-1, -1)
 
 var laser_max_distance = 300
+var laser_cooldown = 0
 
 #cache the sprite here for fast access (we will set scale to flip it often)
 onready var sprite = $sprite
@@ -61,6 +62,9 @@ func _draw():
 	#var tilemap = get_node("../TileMap")
 	#print(tilemap.world_to_map(sel_pos));
 	
+	if (sel_pos.x < 0):
+		return
+	
 	self.draw_rect(Rect2(sel_pos.x, sel_pos.y, 64, 64), Color(1, 0, 0, 1), DRAW_DEBUG)
 	
 	#self.draw_line(self.position, ray_pos, Color(0, 0, 1, 1), 1.0, false)
@@ -81,7 +85,7 @@ func resetSelector():
 	self.end_pos = Vector2(-1, -1)
 	pass
 
-func _input(event):
+func handle_destroy_block():
 	var tilemap = get_node("../TileMap")
 	
 	var space_state = get_world_2d().direct_space_state;
@@ -94,7 +98,7 @@ func _input(event):
 		self.update()
 		return
 	
-	_calc_endPos();
+	_calc_endPos()
 	
 	#var result = space_state.intersect_ray(self.position, get_global_mouse_position(), [self], tilemap.collision_mask)
 	var result = space_state.intersect_ray(self.position, end_pos, [self], tilemap.collision_mask)
@@ -105,21 +109,31 @@ func _input(event):
 		ray_pos = get_global_mouse_position()
 	
 	#abbauen
-	if (Input.is_action_pressed("abbauen") && not self.sel_pos.x == -1):
+	if (Input.is_action_pressed("abbauen") && not self.sel_pos.x == -1 && laser_cooldown <= 0):
 		var mappos = tilemap.world_to_map(self.sel_pos)
 		var blockID = tilemap.get_cellv(mappos);
 		if (blockID != -1 && blockID != BARRIER_ID):
 			tilemap.set_cellv(mappos, -1);
+		laser_cooldown = 0.3	#TODO make this a variable so we can upgrade this
 		pass
 	
 	self.update()
 	
 	pass
 
+func _ready():
+	var camera = get_node("camera")
+	if (camera.is_current()):
+		ProjectSettings.set("currentCamera", camera)
+	pass
+
 func _physics_process(delta):
 	#increment counters
 
 	onair_time += delta
+	
+	laser_cooldown -= delta
+	handle_destroy_block()		#TODO maybe move back to _input so we need to click multiple times, and add an upgrade for auto-clicking?
 
 	### MOVEMENT ###
 
