@@ -136,14 +136,22 @@ func _physics_process(delta):
 	handle_destroy_block()		#TODO maybe move back to _input so we need to click multiple times, and add an upgrade for auto-clicking?
 
 	if (Input.is_action_just_pressed("screenshot_key")):
-		get_viewport().set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
+		var vport = get_viewport() #get_node('../ViewportScreenShot')
+		#vport.world_2d = get_viewport().world_2d
+		get_viewport().size = Vector2(2000, 1200);
+		get_node("camera").set_zoom(Vector2(10, 10))
+		get_node('../HUD').set_scale(Vector2(0, 0))
+		#vport.set_clear_mode(Viewport.CLEAR_MODE_ONLY_NEXT_FRAME)
 		yield(get_tree(), "idle_frame")
 		yield(get_tree(), "idle_frame")		
-		var image = get_viewport().get_texture().get_data()
+		var image = vport.get_texture().get_data()
 		image.flip_y()
 		var timeDict = OS.get_datetime();
 		var fname = "screenshot-%04d-%02d-%02d_%02d-%02d-%02d.png" % [ timeDict["year"], timeDict["month"], timeDict["day"], timeDict["hour"], timeDict["minute"], timeDict["second"] ]
 		image.save_png("res://screenshots/" + fname)
+		
+		get_node('../HUD').set_scale(Vector2(1, 1))
+		get_node("camera").set_zoom(Vector2(1, 1))
 
 	### MOVEMENT ###
 
