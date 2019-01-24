@@ -31,7 +31,8 @@ var laser_max_distance = 300
 var laser_cooldown = 0
 
 #cache the sprite here for fast access (we will set scale to flip it often)
-onready var sprite = $sprite
+#onready var sprite = $sprite
+onready var playerTex = $playerTex
 
 func _calc_endPos():
 	var diff = Vector2(0, 0)
@@ -209,23 +210,28 @@ func _physics_process(delta):
 
 	if on_floor:
 		if linear_vel.x < -SIDING_CHANGE_SPEED:
-			sprite.scale.x = -1
-			new_anim = "run"
+			#sprite.scale.x = -1
+			playerTex.flipX = false
+			new_anim = "walking"
 
 		if linear_vel.x > SIDING_CHANGE_SPEED:
-			sprite.scale.x = 1
-			new_anim = "run"
+			#sprite.scale.x = 1
+			playerTex.flipX = true
+			new_anim = "walking"
 	else:
 		if Input.is_action_pressed("move_left") and not Input.is_action_pressed("move_right"):
-			sprite.scale.x = -1
+			#sprite.scale.x = -1
+			playerTex.flipX = false
 		if Input.is_action_pressed("move_right") and not Input.is_action_pressed("move_left"):
-			sprite.scale.x = 1
+			#sprite.scale.x = 1
+			playerTex.flipX = true
 
-		if linear_vel.y < 0:
-			new_anim = "jumping"
-		else:
-			new_anim = "falling"
+		#if linear_vel.y < 0:
+			#new_anim = "jumping"
+		#else:
+			#new_anim = "falling"
 
 	if new_anim != anim:
 		anim = new_anim
-		$anim.play(anim)
+		playerTex.fade_in(anim, 0.3, -1, 0, "", GDDragonBones.FadeOut_SameLayerAndGroup)
+		#$anim.play(anim)
