@@ -9,8 +9,6 @@ const FLY_SPEED = 480
 const SIDING_CHANGE_SPEED = 10
 const ENERGY_PER_SECOND = 8
 
-const BARRIER_ID = 3
-
 const DRAW_DEBUG = false
 
 var linear_vel = Vector2()
@@ -88,6 +86,7 @@ func resetSelector():
 
 func handle_destroy_block():
 	var tilemap = get_node("../TileMap")
+	var borderID = tilemap.getTileSetID("map_border")
 	
 	var space_state = get_world_2d().direct_space_state;
 	
@@ -113,7 +112,7 @@ func handle_destroy_block():
 	if (Input.is_action_pressed("abbauen") && not self.sel_pos.x == -1 && laser_cooldown <= 0):
 		var mappos = tilemap.world_to_map(self.sel_pos)
 		var blockID = tilemap.get_cellv(mappos);
-		if (blockID != -1 && blockID != BARRIER_ID):
+		if (blockID != -1 && blockID != borderID):
 			tilemap.set_cellv(mappos, -1);
 		laser_cooldown = 0.3	#TODO make this a variable so we can upgrade this
 		pass
