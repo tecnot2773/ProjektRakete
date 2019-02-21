@@ -25,7 +25,7 @@ var layers = [
 ]
 
 const OFFSET_Y = -1;
-const MAX_X = 20
+const MAX_X = 400
 const MAX_Y = 100
 
 func generateMap():
@@ -45,7 +45,7 @@ func generateMap():
 	randomize()
 	var _seed = randi()
 	genGrassLayer(_seed)
-	genStoneLayer(_seed)
+	#genStoneLayer(_seed)
 	
 	#generate alphawand
 	#left | right
