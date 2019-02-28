@@ -36,8 +36,8 @@ func _init(_seed = 2016):
 	#original init
 	seed(_seed);
 	for i in range(tableSize):
-		var thera = acos(2 * dice() - 1);
-		var phi = 2 * dice() * M_PI;
+		var theta = acos(2 * dice() - 1);
+		var phi = 2 * dice() * PI;
 		var x = cos(phi) * sin(theta);
 		var y = sin(phi) * sin(theta);
 		var z = cos(theta);
@@ -51,25 +51,25 @@ func _init(_seed = 2016):
 		self.permutationTable[tableSize + i] = self.permutationTable[i]
 	
 func eval(p, derivs):
-	var xi0 = ((int) floor(p.x)) & tableSizeMask;
-	var yi0 = ((int) floor(p.y)) & tableSizeMask;
-	var zi0 = ((int) floor(p.z)) & tableSizeMask;
+	var xi0 = (int(floor(p.x))) & tableSizeMask;
+	var yi0 = (int(floor(p.y))) & tableSizeMask;
+	var zi0 = (int(floor(p.z))) & tableSizeMask;
 	
 	var xi1 = (xi0 + 1) & tableSizeMask;
 	var yi1 = (yi0 + 1) & tableSizeMask;
 	var zi1 = (zi0 + 1) & tableSizeMask;
 	
-	var tx = p.x - ((int) floor(p.x));
-	var ty = p.y - ((int) floor(p.y));
-	var tz = p.z - ((int) floor(p.z));
+	var tx = p.x - (int(floor(p.x)));
+	var ty = p.y - (int(floor(p.y)));
+	var tz = p.z - (int(floor(p.z)));
 	
 	var u = quintic(tx);
 	var v = quintic(ty);
 	var w = quintic(tz);
 	
-	var x0 = tx, x1 = tx - 1;
-	var y0 = ty, y1 = ty - 1;
-	var z0 = tz, z1 = tz - 1;
+	var x0 = tx; var x1 = tx - 1;
+	var y0 = ty; var y1 = ty - 1;
+	var z0 = tz; var z1 = tz - 1;
 	
 	var a = gradientDotV(myhash(xi0, yi0, zi0), x0, y0, z0);
 	var b = gradientDotV(myhash(xi1, yi0, zi0), x1, y0, z0);
@@ -79,6 +79,10 @@ func eval(p, derivs):
 	var f = gradientDotV(myhash(xi1, yi0, zi1), x1, y0, z1);
 	var g = gradientDotV(myhash(xi0, yi1, zi1), x0, y1, z1);
 	var h = gradientDotV(myhash(xi1, yi1, zi1), x1, y1, z1);
+	
+	var du = quinticDeriv(tx);
+	var dv = quinticDeriv(ty);
+	var dw = quinticDeriv(tz);
 	
 	var k0 = a;
 	var k1 = (b - a);
@@ -99,6 +103,23 @@ func myhash(x, y, z):
 	return self.permutationTable[self.permutationTable[self.permutationTable[x] + y] + z];
 
 func gradientDotV(perm, x, y, z):
+	match (perm & 15):
+		0: return x + y; # (1,1,0)
+		1: return -x + y; # (-1,1,0)
+		2: return x - y; # (1,-1,0)
+		3: return -x - y; # (-1,-1,0)
+		4: return x + z; # (1,0,1)
+		5: return -x + z; # (-1,0,1)
+		6: return x - z; # (1,0,-1)
+		7: return -x - z; # (-1,0,-1)
+		8: return y + z; # (0,1,1),
+		9: return -y + z; # (0,-1,1),
+		10: return y - z; # (0,1,-1),
+		11: return -y - z; # (0,-1,-1)
+		12: return y + x; # (1,1,0)
+		13: return -x + y; # (-1,1,0)
+		14: return -y + z; # (0,-1,1)
+		15: return -y - z; # (0,-1,-1) 
 	pass
 	
 	
