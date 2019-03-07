@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Rocket Live"
-run/main_scene="res://stage.tscn"
+run/main_scene="res://scenes/stage.tscn"
 target_fps="60"
 
 [display]

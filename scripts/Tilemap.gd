@@ -5,6 +5,16 @@ var borderID = self.get_tileset().find_tile_by_name("map_border")
 var grassID = self.get_tileset().find_tile_by_name("grassblock")
 var stoneID = self.get_tileset().find_tile_by_name("steinblock")
 
+var oreNameDict = [ "beletum", "betamaramor", "chronataphor", "cobgorop", "remarophos", "tizener" ]
+onready var oreDictIDs = genOreDictIDs()
+
+func genOreDictIDs():
+	var dict = []
+	dict.resize(oreNameDict.size())
+	for i in range(oreNameDict.size()):
+		dict[i] = self.getTileSetID(oreNameDict[i])
+	return dict
+
 func getTileSetID(name):
 	return self.get_tileset().find_tile_by_name(name)
 
@@ -25,7 +35,18 @@ func genStoneLayer(_seed):
 		for j in range(y):
 			set_cell(i, (j * -1) + 20, stoneID)		#insert Stone id here
 
-func genErze(_seed):
+func genOres(_seed):
+	var yMin = 17
+	
+	for i in range(oreDictIDs.size()):
+		var valueNoise2D = load('res://scripts/valuenoise2D.gd').new(_seed + randi())
+		var size = rand_range(10, 20)
+		for y in range(size):
+			for x in range(MAX_X):
+				if (valueNoise2D.eval(x, y) >= 0.6):
+					set_cell(x, yMin + y, oreDictIDs[i])
+				pass
+		yMin = yMin + floor(size * 0.5)
 	
 	pass
 
@@ -39,7 +60,7 @@ var layers = [
 
 const OFFSET_Y = -1;
 const MAX_X = 400
-const MAX_Y = 100
+const MAX_Y = 120
 
 func generateMap():
 	self.clear()
@@ -59,7 +80,7 @@ func generateMap():
 	var _seed = randi()
 	genGrassLayer(_seed)
 	genStoneLayer(_seed)
-	genErze(_seed)
+	genOres(_seed)
 	
 	#generate alphawand
 	#left | right
