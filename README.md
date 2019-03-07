@@ -14,3 +14,6 @@ Eine Kopie der Lizenz liegt im Stammordner, unter dem dateinamen LICENSE_godot.m
 ## Über das Projekt
 
 Dieses Kleine Spiel ist im Rahmen eines Schulprojektes entstanden.
+
+##Links
+https://github.com/Oen44/Godot-Inventory
