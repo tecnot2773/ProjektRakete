@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scroll_bg_sky.png" type="Texture" id=1]
 
-[node name="parallax_bg" type="ParallaxBackground" index="0"]
+[node name="parallax_bg" type="ParallaxBackground"]
 
 layer = -1
 offset = Vector2( 0, 0 )
