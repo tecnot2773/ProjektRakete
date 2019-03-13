@@ -1,0 +1,84 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://TileSet/TileSet.tres" type="TileSet" id=1]
+[ext_resource path="res://scripts/Tilemap.gd" type="Script" id=2]
+[ext_resource path="res://scenes/player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/parallax_bg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Inventar.tscn" type="PackedScene" id=6]
+
+[node name="stage" type="Node" index="0"]
+
+[node name="TileMap" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 327683, 0, 0, 327684, 0, 0, 327686, 1, 0, 393220, 1, 0, 393222, 1, 0, 458755, 1, 0, 458756, 1, 0, 458758, 1, 0, 458759, 1, 0, 524290, 1, 0, 524291, 1, 0, 524296, 1, 0, 524297, 1, 0, 524298, 1, 0, 589826, 1, 0, 589835, 1, 0, 655361, 1, 0, 655372, 1, 0, 720897, 1, 0, 720903, 1, 0, 720908, 1, 0, 786433, 1, 0, 786439, 1, 0, 786440, 1, 0, 786444, 1, 0, 851969, 1, 0, 851976, 1, 0, 851979, 1, 0, 851980, 1, 0, 917505, 1, 0, 917516, 1, 0, 983041, 1, 0, 983042, 1, 0, 983052, 1, 0, 1048579, 1, 0, 1048580, 1, 0, 1048581, 1, 0, 1048582, 1, 0, 1048583, 1, 0, 1048584, 1, 0, 1048585, 1, 0, 1048586, 1, 0, 1048587, 1, 0 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="player" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 253.206, 146.614 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
+
+[node name="parallax_bg" parent="." index="2" instance=ExtResource( 4 )]
+
+[node name="HUD" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="Control" type="Control" parent="." index="4"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Label" type="Label" parent="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 523.0
+margin_top = 853.0
+margin_right = 567.0
+margin_bottom = 869.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "(8, 13)"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Inventar" parent="." index="5" instance=ExtResource( 6 )]
+
+visible = false
+
+
