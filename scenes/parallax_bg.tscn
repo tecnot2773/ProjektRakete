@@ -2,8 +2,7 @@
 
 [ext_resource path="res://textures/background/scroll_bg_sky.png" type="Texture" id=1]
 
-
-[node name="parallax_bg" type="ParallaxBackground"]
+[node name="parallax_bg" type="ParallaxBackground" index="0"]
 
 layer = -1
 offset = Vector2( 0, 0 )
@@ -26,7 +25,7 @@ motion_mirroring = Vector2( 800, 0 )
 [node name="Sprite" type="Sprite" parent="sky" index="0"]
 
 position = Vector2( -2.27209, 2.27209 )
-scale = Vector2( 32, 0.94 )
+scale = Vector2( 43.1861, 1.54524 )
 texture = ExtResource( 1 )
 centered = false
 
