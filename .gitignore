@@ -4,3 +4,6 @@
 **/*.exe
 **/*.pck
 **/screenshots/*.png
+**/*.dll
+**/*.so
+**/*.def
