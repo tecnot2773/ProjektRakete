@@ -4,3 +4,4 @@
 **/*.exe
 **/*.pck
 **/screenshots/*.png
+stats.cfg

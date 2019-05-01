@@ -4,25 +4,25 @@
 [ext_resource path="res://animationen/Robtron_seite_tex.png" type="Texture" id=2]
 [ext_resource path="res://animationen/Robtron_seite_ske.json" type="GDDragonBonesResource" id=3]
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 11.6974
-height = 47.1307
+extents = Vector2( 15.2744, 30.879 )
 
-[node name="player" type="KinematicBody2D" index="0"]
+[node name="player" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable", "collision" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
+DRAW_DEBUG = false
 
 [node name="playerTex" type="GDDragonBones" parent="." index="0"]
 
 position = Vector2( 0, 35 )
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 debug = false
 flipX = false
@@ -50,7 +50,7 @@ limit_right = 10000000
 limit_bottom = 10000000
 limit_smoothed = false
 drag_margin_h_enabled = true
-drag_margin_v_enabled = true
+drag_margin_v_enabled = false
 smoothing_enabled = false
 smoothing_speed = 5.0
 offset_v = 0.0
@@ -62,11 +62,12 @@ drag_margin_bottom = 0.2
 editor_draw_screen = true
 editor_draw_limits = false
 editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit", "Smoothing" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 
-position = Vector2( 0.365308, 0.351245 )
-scale = Vector2( 1.17961, 1.03709 )
+position = Vector2( -1.98888, -23.3667 )
+scale = Vector2( 1.44576, 1.89561 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 

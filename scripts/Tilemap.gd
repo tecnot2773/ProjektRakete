@@ -1,11 +1,11 @@
 extends TileMap
 
-var dirtID = self.get_tileset().find_tile_by_name("dirt")
+var dirtID = self.get_tileset().find_tile_by_name("Erde")
 var borderID = self.get_tileset().find_tile_by_name("map_border")
 var grassID = self.get_tileset().find_tile_by_name("grassblock")
-var stoneID = self.get_tileset().find_tile_by_name("steinblock")
+var stoneID = self.get_tileset().find_tile_by_name("Stein")
 
-var oreNameDict = [ "beletum", "betamaramor", "chronataphor", "cobgorop", "remarophos", "tizener" ]
+var oreNameDict = [ "Beletum", "Betamaramor", "Chronataphor", "Cobgorop", "Remarophos", "Tizener", "Meddl" ]
 onready var oreDictIDs = genOreDictIDs()
 
 func genOreDictIDs():
@@ -15,8 +15,12 @@ func genOreDictIDs():
 		dict[i] = self.getTileSetID(oreNameDict[i])
 	return dict
 
+# name muss am anfang großgeschrieben werden, gibt die tileID zurück
 func getTileSetID(name):
 	return self.get_tileset().find_tile_by_name(name)
+
+func getTileName(tileID):
+	return self.get_tileset().tile_get_name(tileID)
 
 func genGrassLayer(_seed):
 	var valueNoise1D = load('res://scripts/valuenoise1D.gd').new(_seed + randi())
@@ -43,7 +47,7 @@ func genOres(_seed):
 		var size = rand_range(10, 20)
 		for y in range(size):
 			for x in range(MAX_X):
-				if (valueNoise2D.eval(x, y) >= 0.6):
+				if (valueNoise2D.eval(x, y) >= 0.9):
 					set_cell(x, yMin + y, oreDictIDs[i])
 				pass
 		yMin = yMin + floor(size * 0.5)
@@ -54,12 +58,12 @@ var layers = [
 	{ "rows":  1, "tileID":  borderID },	#border top
 	{ "rows": 14, "tileID": -1 },	#air
 	{ "rows":  2, "tileID":  dirtID },	#erde
-	{ "rows": 90, "tileID":  stoneID },
+	{ "rows": 70, "tileID":  -1 },
 	{ "rows":  1, "tileID":  borderID }	#border bottom
 ]
 
 const OFFSET_Y = -1;
-const MAX_X = 400
+const MAX_X = 200
 const MAX_Y = 120
 
 func generateMap():
